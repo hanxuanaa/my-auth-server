@@ -1,10 +1,18 @@
 {
-  "functions": {
-    "api/index.py": {
-      "runtime": "@vercel/python@3.9"
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python@3.10",
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
     }
-  },
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/api/index.py" }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.py"
+    }
   ]
 }
